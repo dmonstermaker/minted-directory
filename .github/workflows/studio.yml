@@ -59,8 +59,9 @@ jobs:
         run: ${{ steps.pkgman.outputs.package_manager }} install
 
       - name: Generate
-        run: npx nuxi build --preset github_pages
+        run: ${{ steps.pkgman.outputs.package_manager }} run build
         env:
+          NITRO_PRESET: github_pages
           NUXT_CONTENT_PREVIEW_API: https://api.nuxt.studio
           
 
